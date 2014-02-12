@@ -12,9 +12,9 @@ v 0.3
 
 To install ink v 0.3, 
 
-1. clone my Git repo. I’d recommend cloning it somewhere in your “code” directory. Inside you’ll find a .sh file and a README. 
+1. Clone this Git repo. I’d recommend cloning it somewhere in your “code” directory. Inside you’ll find a .sh file and a README. 
 2. Open the ink.sh file in a text editor like Sublime. On line 9, put in the path to your Octopress directory (user.github.io). Then verify that line 17 is the correct path from your github.io directory to your posts. 
-3. Now navigate to your user.github.io directory in your terminal. if you run ```git branch``` you should see two branches: “source” and “master”. Create a new branch called “drafts” but typing ```git branch drafts```. Do NOT checkout the new “drafts” branch, just create. Keep “source” checked out.  
+3. Now navigate to your user.github.io directory in your terminal. If you run ```git branch``` you should see two branches: “source” and “master”. Create a new branch called “drafts” by typing ```git branch drafts```. Do NOT checkout the new “drafts” branch, just create it. Keep “source” checked out.  
 4. Next, you’ll want to put a function in your bash profile so you can call ink from anywhere in your terminal. To open your bash profile, run the following in your command line: ```open ~/.bash_profile```. Paste in this function in the top level:
 ```
 function ink { bash /Users/$USER/Documents/code/ink/ink.sh "$1" }
