@@ -14,6 +14,8 @@
   
   FILENAME="placeholder"
 
+  DRAFT_CAPABLE=0
+
   initialize_draft() {
     
     cd $BLOG_DIRECTORY
@@ -42,9 +44,11 @@
         touch "saved_drafts_will_go_here.md"
         git add .
         git commit -m "Removed duplicates of published posts moved to ink_drafts branch automatically."
+        DRAFT_CAPABLE=1
       else 
         echo "OK, you can either create the branch in "$BLOG_DIRECTORY" yourself, or not use ink's"
         echo "draft-saving functionality."
+        DRAFT_CAPABLE=0
       fi
 
       # get back to source. 
@@ -52,6 +56,7 @@
       git checkout source
     else 
       echo 'You have an ink_drafts branch already. Awesome.'
+      DRAFT_CAPABLE=1
     fi
 
     cd $BLOG_DIRECTORY
@@ -72,7 +77,10 @@
     echo "Once you've saved the file of your new post, here are your options:"
     echo ''
     echo "p - publish your Octopress blog and push to GitHub"
+    if [[ $DRAFT_CAPABLE == 1 ]]
+    then
     echo 's - save this post as a draft.'
+    fi 
     echo "x - delete the post you just wrote, and remove it from your local Git repo"
     echo "q - quit without doing either of the above"
     echo ''
@@ -293,7 +301,10 @@
   echo ''
   echo "n - Open a new post"
   echo "p - publish your Octopress blog and push to GitHub"
+  if [[ $DRAFT_CAPABLE == 1 ]]
+    then
   echo "d - load your saved drafts"
+  fi
   echo "r - preview your Octopress blog"
   echo "h - help"
   echo "q - quit without doing any of the above"
