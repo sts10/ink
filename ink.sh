@@ -2,8 +2,8 @@
 
 # https://github.com/sts10/ink
 
-
-  cd /Users/$USER/Documents/code/sts10.github.io 
+  BLOG_DIRECTORY="/Users/$USER/Documents/code/sts10.github.io"
+  cd $BLOG_DIRECTORY
 
 
   INPUT="$1"
@@ -21,14 +21,14 @@
 
     clear 
    
-    echo "I just opened a file called "$FILENAME" for you! Go write an awesome post!"
+    echo "I just opened a file called "$FILENAME" for you! Go write an awesome post -- I'll wait!"
 
     echo ''
     echo "Once you've saved the file of your new post, here are your options:"
     echo ''
-    echo "p - publish your octopress blog and commit and push your source branch to GitHub"
-    echo 's - save this post as a draft. Drafts are accessible by entering ink "drafts" on the command line.'
-    echo "x - delete the post you just wrote, and remove it from the source branch of your local Git repo"
+    echo "p - publish your Octopress blog and push to GitHub"
+    echo 's - save this post as a draft.'
+    echo "x - delete the post you just wrote, and remove it from your local Git repo"
     echo "q - quit without doing either of the above"
     echo ''
 
@@ -42,7 +42,7 @@
     then
         # commit git and publish blog
         
-        cd ../../
+        cd $BLOG_DIRECTORY
         
         
         git add .
@@ -67,16 +67,16 @@
           git push origin source
           echo ''
           echo "Deleted "$FILENAME", removed it from Git, and committed and pushed Git"  
-          # cd $cwd
         else
-          echo "OK, we'll just leave it in your _posts folder."
-          cd ../../
+          echo "Goodbye"
+          exit 
+          # cd ../../
         fi
     elif [[ $REPLY =~ ^[Ss]$ ]]
     then 
 
-      cd ../../
-
+      cd $BLOG_DIRECTORY
+      
       git add .
       git commit -m "add draft to source branch temporarily"
 
@@ -111,11 +111,11 @@
           git commit -m "Moved post "$FILENAME" to drafts branch and remove from source branch."
           git push origin source
 
-      cd ../../
+      cd $BLOG_DIRECTORY
 
     else
       echo "OK, we'll just leave this post in your source/_posts directory, unstaged."
-      cd ../../  # return to main octopress directory  
+     
 
     fi
 
@@ -186,6 +186,16 @@
   }
 
 
+  publish_blog() {
+    git add .
+        git commit -m  "Used ink to publish a new post called "$FILENAME"."  
+
+        git push origin source
+        rake generate
+        rake deploy 
+  }
+
+
   # Now start program
 
 
@@ -201,7 +211,7 @@
   elif [[ $INPUT == "publish" ]]
   then 
     publish_blog
-
+    exit 
   elif [[ $INPUT == "help" ]]
   then
     echo "some help"
@@ -237,7 +247,7 @@
   echo "Welcome to ink v. 0.31"
   echo ''
   echo "n - Open a new post"
-  echo "p - publish your Octopress blog and commit and push your source branch to GitHub"
+  echo "p - publish your Octopress blog and push to GitHub"
   echo "d - load your saved drafts"
   echo "r - preview your Octopress blog"
   echo "h - help"

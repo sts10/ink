@@ -1,16 +1,22 @@
-global="heyo"
 
-call_my_name (){
-  FILENAME=$1
-  echo $FILENAME
-  global="affected"
-  # echo $*
-}
+DIRECTORY="/Users/$USER/Documents/code/test"
+  cd $DIRECTORY
 
-NAME="Bob"
+echo (git branch | grep 'drafts')
 
-call_my_name "$NAME" "number two"
+# global="heyo"
 
-call_my_name "Tony"
+# call_my_name (){
+#   FILENAME=$1
+#   echo $FILENAME
+#   global="affected"
+#   # echo $*
+# }
 
-echo $global
+# NAME="Bob"
+
+# call_my_name "$NAME" "number two"
+
+# call_my_name "Tony"
+
+# echo $global
