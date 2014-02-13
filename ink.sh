@@ -20,31 +20,43 @@
 
     if [[ $(git branch | grep 'ink_drafts') == "" ]]
     then 
-      echo "Need to create a ink_drafts branch"
-      git checkout -b ink_drafts
-      git checkout ink_drafts
 
-      cd source/_posts
-      # echo "I'd delete all these files"
-      
-      # git branch
-      
-      git rm * # removes duplicated published posts carried over from checkout
+      echo "Welcome to ink! It looks like you don't have a ink_drafts Git branch set up yet."
+      echo "This will let ink save drafts for you to load later."
+      echo "May I make one for you now? (y/n)"
+      read REPLY3 
+      if [[ $REPLY3 =~ ^[Yy]$ ]]
+      then
 
-      touch "saved_drafts_will_go_here.md"
-      git add .
-      git commit -m "Removed duplicates of published posts moved to ink_drafts branch automatically."
+        echo "Need to create an ink_drafts branch"
+        git checkout -b ink_drafts
+        git checkout ink_drafts
 
+        cd source/_posts
+        # echo "I'd delete all these files"
+        
+        # git branch
+        
+        git rm * # removes duplicated published posts carried over from checkout
+
+        touch "saved_drafts_will_go_here.md"
+        git add .
+        git commit -m "Removed duplicates of published posts moved to ink_drafts branch automatically."
+      else 
+        echo "OK, you can either create the branch in "$BLOG_DIRECTORY" yourself, or not use ink's"
+        echo "draft-saving functionality."
+      fi
 
       # get back to source. 
 
       git checkout source
     else 
-      echo 'You have a ink_drafts branch already. Awesome.'
+      echo 'You have an ink_drafts branch already. Awesome.'
     fi
 
     cd $BLOG_DIRECTORY
   }
+
 
   initialize_draft
   
@@ -157,7 +169,7 @@
   }
 
   load_ink_drafts(){
-    git checkout ink_drafts
+    git checkout --quiet ink_drafts
 
      cd source/_posts/
 
