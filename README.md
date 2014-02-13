@@ -25,9 +25,9 @@ Close and reopen your terminal. You should now be able to call ```ink``` from an
 
 From anywhere in the terminal, user can call ```$ ink ``` to access ink's main menu. As a shortcut, user's can create a new post by typing: ```$ ink “blog post title”``` in the terminal.
 
-Once a user opens a new post, their default text/markdown editor launches. The user then writes his or her post, saves it, closes the editor. 
+Once a user opens a new post, their default text/markdown editor launches. The user should then write his or her post, save it, and exit the editor. 
 
-The user should return to the open terminal window and user will find a menu with three choices: publish, save, delete, and quit. 
+The user should then immediately return to the open terminal window, where the user will find a menu with the following choices: publish, save, delete, and quit. 
 
 **Publish** adds, commits, and pushes the user’s Git up to GitHub, then deploys your Octopress blog. Here’s the Bash code:
 
