@@ -20,6 +20,9 @@ function ink { bash /Users/$USER/Documents/code/ink/ink.sh "$1" }
 ```
 Close and reopen your terminal. You should now be able to call ```ink``` from anywhere in your terminal to run ink. On the first run, it should ask you for permission to create an "ink_drafts" Git branch. If you'd like ink to be able to save drafts, type "y". If you say yes you won't be asked again. 
 
+### Warnings
+
+It should be noted that version 0.0.4 includes a ```git rm *``` command. This command is only run on the “ink_drafts” Git branch that the script itself creates, and it is only run on the initial setup of the branch, after the script detects that the user has not already created an “ink_drafts” branch. If you have concerns, please read through the ink.sh file. 
 
 ### Use
 
