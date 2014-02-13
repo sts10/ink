@@ -3,12 +3,15 @@
 # https://github.com/sts10/ink
 
 
+  cd /Users/$USER/Documents/code/sts10.github.io 
+
+
   INPUT="$1"
 
   POST_TITLE="$2"
   
 
-  cd /Users/$USER/Documents/code/sts10.github.io 
+
 
   FILENAME="placeholder"
   
@@ -25,7 +28,7 @@
     echo ''
     echo "p - publish your octopress blog and commit and push your source branch to GitHub"
     echo 's - save this post as a draft. Drafts are accessible by entering ink "drafts" on the command line.'
-    echo "d - delete the post you just wrote, and remove it from the source branch of your local Git repo"
+    echo "x - delete the post you just wrote, and remove it from the source branch of your local Git repo"
     echo "q - quit without doing either of the above"
     echo ''
 
@@ -51,7 +54,7 @@
 
  
 
-    elif [[ $REPLY =~ ^[Dd]$ ]]
+    elif [[ $REPLY =~ ^[Xx]$ ]]
     then 
         echo ''
         echo "Are you sure you want to delete "$FILENAME"? (y/n) "
@@ -193,6 +196,8 @@
 
     open_file_name "$FILENAME"
 
+    exit 
+
   elif [[ $INPUT == "publish" ]]
   then 
     publish_blog
@@ -209,17 +214,18 @@
   then
     echo "loading menu"
  
-  else # if [[ $INPUT == "new" ]]
-  # then
+  elif [[ $INPUT == ""*"" ]]
+  then
     rake new_post["$INPUT"]
     echo "Creating new octopress post called \""$INPUT"\""
 
     cd source/_posts
     FILENAME=`ls -t | head -1`
     open_file_name "$FILENAME"
+    exit 
 
-  # else
-  #   echo "Here's help info"
+ # else
+ #  echo "Here's help info"
 
   fi
 
@@ -231,7 +237,7 @@
   echo "Welcome to ink v. 0.31"
   echo ''
   echo "n - Open a new post"
-  echo "p - publish your octopress blog and commit and push your source branch to GitHub"
+  echo "p - publish your Octopress blog and commit and push your source branch to GitHub"
   echo "d - load your saved drafts"
   echo "r - preview your Octopress blog"
   echo "h - help"
