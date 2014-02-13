@@ -3,17 +3,40 @@
 # https://github.com/sts10/ink
 
   BLOG_DIRECTORY="/Users/$USER/Documents/code/sts10.github.io"
+  
+
   cd $BLOG_DIRECTORY
 
 
   INPUT="$1"
 
-  POST_TITLE="$2"
+  # POST_TITLE="$2"
   
-
-
-
   FILENAME="placeholder"
+
+  initialize_draft() {
+    
+    cd $BLOG_DIRECTORY
+
+    if [[ $(git branch | grep 'drafts') == "" ]]
+    then 
+      echo "Need to create a drafts branch"
+      git checkout -b drafts
+      git checkout drafts
+
+      cd source/_posts
+      echo "I'd delete all these files"
+      git branch
+      ls
+
+
+    else 
+      echo 'You have a drafts branch already. Awesome.'
+    fi
+
+  }
+
+  initialize_draft
   
   open_file_name() {
     FILENAME=$1
@@ -76,7 +99,7 @@
     then 
 
       cd $BLOG_DIRECTORY
-      
+
       git add .
       git commit -m "add draft to source branch temporarily"
 
