@@ -12,7 +12,7 @@ v 0.0.4
 
 To install ink v 0.0.4, 
 
-1. Download or clone this Git repo. I’d recommend saving/cloning it somewhere in your “code” directory, but it doesn't really matter where you put it. Inside you’ll find a .sh file and a README. 
+1. Clone this Git repo. I’d recommend saving/cloning it somewhere in your “code” directory, but it doesn't really matter where you put it. Inside you’ll find a .sh file and a README. 
 2. Open the ink.sh file in a text editor like Sublime. On line 5, for the variable BLOG_DIRECTORY, replace my path with the path to your Octopress directory (user.github.io). Then verify that line 37 is the correct path from your github.io directory to your posts (it probably is). 
 3. Next, you’ll want to put a function in your bash profile so you can call ink from anywhere in your terminal. To open your bash profile, run the following in your command line: ```open ~/.bash_profile```. Paste in this function in the top level:
 ```
@@ -22,7 +22,7 @@ Close and reopen your terminal. You should now be able to call ```ink``` from an
 
 ### Warnings
 
-It should be noted that version 0.0.4 includes a ```git rm *``` command. This command is only run on the “ink_drafts” Git branch that the script itself creates, and it is only run on the initial setup of the branch, after the script detects that the user has not already created an “ink_drafts” branch. If you have concerns, please read through the ink.sh file. 
+It should be noted that version 0.0.4 includes a ```git rm *``` command. This command is only run on the “ink_drafts” Git branch that the script itself creates, and it is only run on the initial setup of the branch, after the script detects that the user has not already created an “ink_drafts” branch. Use at your own risk. If you have concerns, please read through the ink.sh file. You may also want to create a back-up of your ```source/_posts``` directory somewhere outside your Octopress blog directory just to be on the safe side. 
 
 ### Use
 
