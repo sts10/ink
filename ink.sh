@@ -18,22 +18,32 @@
     
     cd $BLOG_DIRECTORY
 
-    if [[ $(git branch | grep 'drafts') == "" ]]
+    if [[ $(git branch | grep 'ink_drafts') == "" ]]
     then 
-      echo "Need to create a drafts branch"
-      git checkout -b drafts
-      git checkout drafts
+      echo "Need to create a ink_drafts branch"
+      git checkout -b ink_drafts
+      git checkout ink_drafts
 
       cd source/_posts
-      echo "I'd delete all these files"
-      git branch
-      ls
+      # echo "I'd delete all these files"
+      
+      # git branch
+      
+      git rm * # removes duplicated published posts carried over from checkout
+
+      touch "saved_drafts_will_go_here.md"
+      git add .
+      git commit -m "Removed duplicates of published posts moved to ink_drafts branch automatically."
 
 
+      # get back to source. 
+
+      git checkout source
     else 
-      echo 'You have a drafts branch already. Awesome.'
+      echo 'You have a ink_drafts branch already. Awesome.'
     fi
 
+    cd $BLOG_DIRECTORY
   }
 
   initialize_draft
@@ -103,7 +113,7 @@
       git add .
       git commit -m "add draft to source branch temporarily"
 
-      git checkout drafts
+      git checkout ink_drafts
 
       if [ ! -f source/_posts/$FILENAME ]  #if this IS a new draft
       then
@@ -117,10 +127,10 @@
         git commit -m "add blank"
 
 
-      git checkout source -- source/_posts/$FILENAME  # move the file I'm working on to drafts
+      git checkout source -- source/_posts/$FILENAME  # move the file I'm working on to ink_drafts
 
       git add .
-      git commit -m "add draft "$FILENAME" to drafts branch."
+      git commit -m "add draft "$FILENAME" to ink_drafts branch."
 
 
       # clean up the source branch
@@ -131,7 +141,7 @@
 
       rm $FILENAME
           git add --all .
-          git commit -m "Moved post "$FILENAME" to drafts branch and remove from source branch."
+          git commit -m "Moved post "$FILENAME" to ink_drafts branch and remove from source branch."
           git push origin source
 
       cd $BLOG_DIRECTORY
@@ -146,8 +156,8 @@
 
   }
 
-  load_drafts(){
-    git checkout drafts
+  load_ink_drafts(){
+    git checkout ink_drafts
 
      cd source/_posts/
 
@@ -190,17 +200,17 @@
       exit 
     fi
 
-    # move $FILENAME from drafts to source, assuming we'll publish it
+    # move $FILENAME from ink_drafts to source, assuming we'll publish it
     git checkout source
-    git checkout drafts -- $FILENAME  # get draft from drafts branch, put in source branch
+    git checkout ink_drafts -- $FILENAME  # get draft from ink_drafts branch, put in source branch
 
       # commit changes to source branch 
       git add . 
       git commit -m "move your selected draft to source branch"
 
 
-    # (temporarily) delete $FILENAME from the drafts branch
-    git checkout drafts
+    # (temporarily) delete $FILENAME from the ink_drafts branch
+    git checkout ink_drafts
       rm $FILENAME
       git add --all . 
       git commit -m "move your selected draft to source branch"
@@ -225,7 +235,7 @@
 
   if [[ $INPUT == "drafts" ]]
   then
-    load_drafts
+    load_ink_drafts
 
     open_file_name "$FILENAME"
 
@@ -281,7 +291,7 @@
 
   if [[ $REPLY == "d" ]]
   then
-    load_drafts
+    load_ink_drafts
 
     open_file_name "$FILENAME"
 
