@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ink
 
 # https://github.com/sts10/ink
