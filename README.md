@@ -20,6 +20,10 @@ function ink { bash /Users/$USER/Documents/code/ink/ink.sh "$1" }
 ```
 Close and reopen your terminal. You should now be able to call ```ink``` from anywhere in your terminal to run ink. On the first run, it should ask you for permission to create an "ink_drafts" Git branch. If you'd like ink to be able to save drafts, type "y". If you say yes you won't be asked again. 
 
+### A Note About Your Octopress Gemfile
+
+Octopress (and thus, ink) will not function properly if your local version of the rake gem is above 1.0. If you've updated your rake gem recently (i.e. if you execute rake tasks regularly) you may need to edit the Gemfile in your Octopress directory in order to accept newer versions of the rake gem. [This helpful blog post](http://derekbarber.ca/blog/2011/12/19/fixing-rake-error-when-installing-octopress/) explains how to do that. 
+
 ### Warnings
 
 It should be noted that version 0.0.4 includes a ```git rm *``` command. This command is only run on the “ink_drafts” Git branch that the script itself creates, and it is only run on the initial setup of the branch, after the script detects that the user has not already created an “ink_drafts” branch. Use at your own risk. If you have concerns, please read through the ink.sh file. You may also want to create a back-up of your ```source/_posts``` directory somewhere outside your Octopress blog directory just to be on the safe side. 
