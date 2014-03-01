@@ -181,8 +181,12 @@
   load_ink_drafts(){
     git checkout --quiet ink_drafts
 
-     cd source/_posts/
+    cd source/_posts/
 
+
+    echo ''
+    echo 'Here are your saved drafts:'
+    echo ''
 
     FILENAME="q"
 
@@ -207,7 +211,7 @@
     if [[ $FILENAME == "q" ]]
     then
       echo ''
-      echo "Sorry, I don't have that draft. Goodbye."
+      echo "Quitting..."
       git checkout source 
       exit 
     fi
@@ -299,7 +303,7 @@
   clear
 
    echo ''
-  echo "Welcome to ink v. 0.31"
+  echo "Welcome to ink v. 0.0.4"
   echo ''
   echo "n - Open a new post"
   echo "p - publish your Octopress blog and push to GitHub"
@@ -336,7 +340,7 @@
 
   elif [[ $REPLY == "h" ]]
   then
-    echo "some help"
+    echo "Please refer to https://github.com/sts10/ink for more information"
 
   elif [[ $REPLY == "r" ]]
   then
