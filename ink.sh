@@ -178,6 +178,32 @@
 
   }
 
+
+  open_existing_posts(){
+    cd source/_posts/
+    `subl .`
+
+    echo ''
+    echo "All done? Do you want to..."
+    echo "p - publish blog with your edits"
+    echo "q - quit without publishing"
+
+    read -p "" -n 1 -r  
+    echo ''  
+
+    git checkout source
+
+    if [[ $REPLY =~ ^[Pp]$ ]]
+    then
+      echo "Publishing blog with edits"
+      publish_blog
+    else
+      echo "Quitting"
+    fi
+      
+
+  }
+
   load_ink_drafts(){
     git checkout --quiet ink_drafts
 
@@ -247,11 +273,11 @@
 
   publish_blog() {
     git add .
-        git commit -m  "Used ink to publish a new post called "$FILENAME"."  
+    git commit -m  "Used ink to publish a new post called "$FILENAME"."  
 
-        git push origin source
-        rake generate
-        rake deploy 
+    git push origin source
+    rake generate
+    rake deploy 
   }
 
 
@@ -293,19 +319,16 @@
     open_file_name "$FILENAME"
     exit 
 
- # else
- #  echo "Here's help info"
-
   fi
 
   
   # present menu 
   clear
-
-   echo ''
+  echo ''
   echo "Welcome to ink v. 0.0.4"
   echo ''
   echo "n - Open a new post"
+  echo "e - Open all your existing posts in Sublime Text"
   echo "p - publish your Octopress blog and push to GitHub"
   if [[ $DRAFT_CAPABLE == 1 ]]
     then
@@ -341,6 +364,10 @@
   elif [[ $REPLY == "h" ]]
   then
     echo "Please refer to https://github.com/sts10/ink for more information"
+
+  elif [[ $REPLY == "e" ]]
+  then 
+    open_existing_posts
 
   elif [[ $REPLY == "r" ]]
   then
