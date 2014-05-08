@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # ink
-
 # https://github.com/sts10/ink
 
   BLOG_DIRECTORY="/Users/$USER/Documents/code/sts10.github.io"
@@ -180,8 +179,7 @@
 
 
   open_existing_posts(){
-    cd source/_posts/
-    `subl .`
+    subl source/_posts
 
     echo ''
     echo "All done? Do you want to..."
