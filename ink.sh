@@ -272,7 +272,7 @@
 
 
   publish_blog() {
-    git add .
+    git add --all .
     git commit -m  "Used ink to publish a new post called "$FILENAME"."  
 
     git push origin source
