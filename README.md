@@ -1,14 +1,14 @@
 ink
 ========
 
-A shell script that serves as a crude CMS for Octopress blogs. 
+A shell script that serves as a crude CMS for [Octopress blogs](http://octopress.org/). 
 
 v 0.0.5
 
 
 ### Installation (as of v 0.0.5)
 
-**Recommend you read through the source code first** 
+**Recommended that you read through the source code first** 
 
 To install ink v 0.0.5, 
 
@@ -26,7 +26,7 @@ It should be noted that this version of ink includes a ```git rm *``` command. T
 
 ### Use
 
-From anywhere in the terminal, user can call ```$ ink ``` to access ink's main menu. As a shortcut, user's can create a new post by typing: ```$ ink “blog post title”``` in the terminal.
+From anywhere in the terminal, user can call ```ink ``` to access ink's main menu. As a shortcut, user's can create a new post by typing: ```ink “blog post title”``` in the terminal.
 
 This menu provides you with a couple of options. Let's run through "new post": 
 
@@ -37,16 +37,16 @@ The user should then immediately return to the open terminal window, where the u
 **Publish** adds, commits, and pushes the user’s Git up to GitHub, then deploys your Octopress blog. Here’s the Bash code:
 
 ```shell
-  git add .
-  git commit -m  "Used ink to publish a new post called "$FILENAME"." 
+  git add --all .
+  git commit -m  "Used ink to publish a new post called "$FILENAME"."  
   git push origin source
   rake generate
   rake deploy 
 ```
-and then takes you back to the directory from which you called ```ink```.
+and then takes you back to the directory from which you called `ink`.
 
-**Save** moves the file to the users’ “ink_drafts” branch and stores it there. This way publishing the blog through the rake commands does NOT publish the drafts. Users can access their save drafts by entering ```ink “drafts”``` from anywhere in the terminal. 
+**Save** moves the file to the users’ “ink_drafts” branch and stores it there. This way publishing the blog through the rake commands does NOT publish the drafts. Users can access their save drafts by entering `ink “drafts”` from anywhere in the terminal. 
 
-**Delete** removes the file of the post you just created. It also removes it from the source branch of your local Git repo commits it, and pushes to your remote source branch with ```git push origin source```. It then returns the user to the directory from which they originally called ```ink```.
+**Delete** removes the file of the post you just created. It also removes it from the source branch of your local Git repo, commits that removal, and pushes to your remote source branch with `git push origin source`. It then returns the user to the directory from which they originally called `ink`.
 
-**Quit** just returns user to the directory from which they originally called ```ink```. It leaves the Git not added, not pushed, and not pushed. It also does not run ```rake generate``` or ```rake deploy```.
+**Quit** just returns user to the directory from which they originally called `ink`. It leaves the Git not added, not pushed, and not pushed. It also does not run `rake generate` or `rake deploy`.
