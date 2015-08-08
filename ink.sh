@@ -68,7 +68,7 @@
   
   open_file_name() {
     FILENAME=$1
-    vim $FILENAME
+    mvim $FILENAME
 
     clear 
    
