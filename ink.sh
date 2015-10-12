@@ -179,7 +179,7 @@
 
 
   open_existing_posts(){
-    subl source/_posts
+    mvim source/_posts
 
     echo ''
     echo "All done? Do you want to..."
@@ -326,7 +326,7 @@
   echo "Welcome to ink v. 0.0.4"
   echo ''
   echo "n - Open a new post"
-  echo "e - Open all your existing posts in Sublime Text"
+  echo "e - Open all your existing posts"
   echo "p - publish your Octopress blog and push to GitHub"
   if [[ $DRAFT_CAPABLE == 1 ]]
     then
