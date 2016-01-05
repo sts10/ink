@@ -68,7 +68,7 @@
   
   open_file_name() {
     FILENAME=$1
-    mvim $FILENAME
+    $EDITOR $FILENAME
 
     clear 
    
@@ -179,7 +179,7 @@
 
 
   open_existing_posts(){
-    mvim source/_posts
+    $EDITOR source/_posts
 
     echo ''
     echo "All done? Do you want to..."
