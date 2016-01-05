@@ -54,7 +54,7 @@ and then takes you back to the directory from which you called `ink`.
 
 ## Trouble Shooting
 
-If your CSS stylesheet(s) get reset all of a sudden, try copying the correct CSS (which for Sam [lives here](https://github.com/sts10/sts10.github.io/commit/c173a674a59ea025d6800c525d0b04cfb8617141))into these locations: 
+If your CSS stylesheet(s) get reset all of a sudden, try copying the correct CSS (which for Sam [lives here](https://github.com/sts10/sts10.github.io/blob/c173a674a59ea025d6800c525d0b04cfb8617141/stylesheets/screen.css)) into these locations: 
 
 ```
 /Users/samschlinkert/Documents/code/sts10.github.io/source/stylesheets/screen.css
