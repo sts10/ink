@@ -270,6 +270,7 @@
 
 
   publish_blog() {
+    bundle install
     git add --all .
     git commit -m  "Used ink to publish a new post called "$FILENAME"."  
 
