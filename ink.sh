@@ -181,7 +181,7 @@
   open_existing_posts(){
     $EDITOR source/_posts
 
-    echo ''
+    clear
     echo "All done? Do you want to..."
     echo "p - publish blog with your edits"
     echo "q - quit without publishing"
