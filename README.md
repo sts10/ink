@@ -51,17 +51,3 @@ and then takes you back to the directory from which you called `ink`.
 **Delete** removes the file of the post you just created. It also removes it from the source branch of your local Git repo, commits that removal, and pushes to your remote source branch with `git push origin source`. It then returns the user to the directory from which they originally called `ink`.
 
 **Quit** just returns user to the directory from which they originally called `ink`. It leaves the Git not added, not pushed, and not pushed. It also does not run `rake generate` or `rake deploy`.
-
-## Trouble Shooting
-
-If your CSS stylesheet(s) get reset all of a sudden, try copying the correct CSS (which for Sam [lives here](https://github.com/sts10/sts10.github.io/blob/c173a674a59ea025d6800c525d0b04cfb8617141/stylesheets/screen.css)) into these locations: 
-
-```
-/Users/samschlinkert/Documents/code/sts10.github.io/source/stylesheets/screen.css
-
-/Users/samschlinkert/Documents/code/sts10.github.io/sass/custom/_styles.scss
-
-/Users/samschlinkert/Documents/code/sts10.github.io/public/stylesheets/screen.css
-
-/Users/samschlinkert/Documents/code/sts10.github.io/_deploy/stylesheets/screen.css
-```
